@@ -1,4 +1,4 @@
-<?php include "menu.php"; ?>
+<?php include "../menu.php"; ?>
 <h1>Новости</h1>
 <?php //dump($news) ?>
 <?php foreach ($news as $item): ?>

@@ -1,4 +1,4 @@
-<?php include "menu.php"; ?>
+<?php //include "../menu.php"; ?>
 <h2>Новости категории <?=$name?></h2>
 <?php //dump($name) ?>
 <?php //dump($selected) ?>
