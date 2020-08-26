@@ -30,12 +30,24 @@ Route::group([
 
 Route::group([
     'prefix' => 'news',
-    'namespace' => 'News'
+    'namespace' => 'News',
+    'as' => 'news.'
 ], function () {
     Route::get('/', 'NewsController@index')->name('News');
     Route::get('/{id}', 'NewsController@oneNews')->name('oneNews');
-    Route::get('/{id}/{name}', 'NewsController@newsByCategory')->name('selected');
+
 });
 
-Route::get('/category', 'CategoriesController@index')->name('categories');
+Route::group([
+    'as' => 'category.'
+], function () {
+    Route::get('/categories', 'CategoriesController@index')->name('index');
+    Route::get('/category/{slug}', 'CategoriesController@newsByCategory')->name('selected');
+});
 
+
+Route::view('/vue', 'vue')->name('vue');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
