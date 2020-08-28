@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('Home') }}">Главная</a>
+        <a class="navbar-brand" {{ request()->routeIs('Home') ? 'active' : '' }} href="{{ route('Home') }}">Главная</a>
         <a class="navbar-brand" href="{{ route('news.News') }}">Новости</a>
         <a class="navbar-brand" href="{{ route('category.index') }}">Категория новостей</a>
         <a class="navbar-brand" href="{{ route('admin.index') }}">Админка</a>
