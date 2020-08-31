@@ -2,6 +2,7 @@
 
 namespace App;
 use App\News;
+use Illuminate\Support\Facades\File;
 
 class Categories
 {
@@ -29,12 +30,12 @@ class Categories
     ];
 
     public static function getCategories() {
-        return static::$categories;
+        return json_decode(File::get(storage_path() . '/categories.json'), true );
     }
 
     public static function getCategoryIdByName($slug) {
         $id = null;
-        foreach (static::$categories as $category) {
+        foreach (static::getCategories() as $category) {
             if ($category['slug'] == $slug) {
                 $id = $category['id'];
                 break;
@@ -45,7 +46,7 @@ class Categories
 
     public static function getCategoryNameBySlug($slug) {
         $name = null;
-        foreach (static::$categories as $category) {
+        foreach (static::getCategories() as $category) {
             if ($category['slug'] == $slug) {
                 $name = $category['name'];
                 break;
@@ -55,6 +56,6 @@ class Categories
     }
 
     public static function getCategoryById($id) {
-        return static::$categories[$id];
+        return static::getCategories()[$id];
     }
 }

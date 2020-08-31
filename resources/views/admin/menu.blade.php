@@ -2,6 +2,7 @@
     <div class="container">
         <a class="navbar-brand" href="{{ route('Home') }}">Главная</a>
         <a class="navbar-brand" href="{{ route('admin.index') }}">Главная админка</a>
+        <a class="navbar-brand" href="{{ route('admin.create') }}">Создать новость</a>
         <a class="navbar-brand" href="{{ route('admin.page1') }}">Страница 1</a>
         <a class="navbar-brand" href="{{ route('admin.page2') }}">Страница 2</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
