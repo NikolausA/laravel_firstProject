@@ -25,4 +25,8 @@ class HomeController extends Controller
     {
         return view('index');
     }
+
+    public function entrance() {
+        return view('home');
+    }
 }

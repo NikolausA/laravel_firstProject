@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use Illuminate\Support\Facades\File;
 
 
 class News
@@ -44,7 +45,7 @@ class News
     ];
 
     public static function getNews() {
-        return static::$news;
+        return json_decode(File::get(storage_path() . '/news.json'), true);
     }
 
     public static function getNewsId($id) {
@@ -69,7 +70,7 @@ class News
     public static function getNewsByCategoryName($slug) {
         $id = Categories::getCategoryIdByName($slug);
         $news = [];
-        foreach (static::$news as $item) {
+        foreach (static::getNews() as $item) {
             if ($item['category_id'] == $id) {
                 $news[] = $item;
             }

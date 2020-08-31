@@ -9,6 +9,15 @@
 </head>
 <body>
 @yield('menu')
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ session('success') }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
 @yield('content')
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
