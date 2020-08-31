@@ -1,0 +1,67 @@
+[
+    {
+        "id": 1,
+        "title": "Funny news",
+        "text": "There are a lot of jocks here",
+        "isPrivate": false,
+        "category_id": 2
+    },
+    {
+        "id": 2,
+        "title": "Break news",
+        "text": "Something was going wrong",
+        "isPrivate": false,
+        "category_id": 1
+    },
+    {
+        "id": 3,
+        "title": "What happens",
+        "text": "It never has been before and happened again",
+        "isPrivate": false,
+        "category_id": 4
+    },
+    {
+        "id": 4,
+        "title": "Gorgeous comeback",
+        "text": "They did not give up",
+        "isPrivate": true,
+        "category_id": 3
+    },
+    {
+        "id": 5,
+        "title": "Today or never",
+        "text": "He is going to beat guy who used to be his fan",
+        "isPrivate": false,
+        "category_id": 3
+    },
+    {
+        "title": "lkjfakjc;dsfFASDG",
+        "text": "GWEgwgzfbdg gasrgas fsf gF sadgasga",
+        "isPrivate": false,
+        "category": "1",
+        "id": 5
+    },
+    {
+        "title": "Свежая новость",
+        "text": "Самая свежая новость",
+        "isPrivate": true,
+        "category": "4",
+        "id": 6
+    },
+    {
+        "title": "Где-то у них",
+        "text": "Обычная история!",
+        "isPrivate": false,
+        "category": "4",
+        "image": "\/storage\/images\/3t3ih0uqfOoPgxa7B2zfAgrdHal9NQ6bCSBboeNJ.jpeg",
+        "id": 7
+    },
+    {
+        "title": "Век живи",
+        "text": "Как прожить без бед тысячу лет.",
+        "isPrivate": true,
+        "category": "1",
+        "image": null,
+        "id": 8
+    }
+]
