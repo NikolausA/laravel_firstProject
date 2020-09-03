@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Categories;
 use App\News;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
+//use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -36,7 +36,7 @@ class IndexController extends Controller
             $id = array_key_last($data);
             $data[$id]['id'] = $id;
             File::put(storage_path() . '/news.json', json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
-            $request->flash();
+//            $request->flash();
             return redirect()->route('news.oneNews', $id)->with('success', 'Новость добавлена успешно');
         }
         return view ('admin.create', ['categories' => Categories::getCategories()]);
