@@ -30,5 +30,7 @@
             </div>
         </div>
     @empty
+        Нет новостей
     @endforelse
+    {{ $news->links() }}
 @endsection

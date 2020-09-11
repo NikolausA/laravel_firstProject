@@ -12,7 +12,8 @@ class NewsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('news')->insert($this->getData());
+//        DB::table('news')->insert($this->getData());
+        factory(News::class, 10)->create();
     }
 
     public function getData(): array {

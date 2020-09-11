@@ -10,12 +10,11 @@ use Illuminate\Support\Facades\DB;
 class NewsController extends Controller
 {
     public  function index() {
-        $news = DB::table('news')->get();
+        $news = News::query()->paginate(4);
         return view('news.index')->with('news', $news);
     }
 
-    public function oneNews($id) {
-        $news = DB::table('news')->find($id);
+    public function oneNews(News $news) {
         return view('news.one')->with('news', $news);
     }
 
