@@ -15,8 +15,9 @@
                     <div class="card">
                         <div class="card-header">Добавление новости</div>
                         <div class="card-body">
-                            <form enctype="multipart/form-data" method="POST" action="@if (!$news->id){{ route('admin.create') }}@else{{ route('admin.update', $news) }}@endif">
+                            <form enctype="multipart/form-data" method="POST" action="@if (!$news->id){{ route('admin.news.store') }}@else{{ route('admin.news.update', $news) }}@endif">
                                 @csrf
+                                @if($news->id) @method('PUT') @endif
                                 <div class="form-group row">
                                     <label for="newsTitle" class="col-md-4 col-form-label text-md-right">Заголовок новости</label>
                                     <div class="col-md-6">

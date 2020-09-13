@@ -26,11 +26,14 @@ Route::group([
     Route::get('/page1', 'IndexController@page1')->name('page1');
     Route::get('/page2', 'IndexController@page2')->name('page2');
 
-    Route::get('/', 'NewsController@index')->name('index');
-    Route::match(['get', 'post'], '/create', 'NewsController@create')->name('create');
-    Route::get('/edit/{news}', 'NewsController@edit')->name('edit');
-    Route::post('/update/{news}', 'NewsController@update')->name('update');
-    Route::get('/destroy/{news}', 'NewsController@destroy')->name('destroy');
+//    Route::get('/news', 'NewsController@index')->name('news.index');
+//    Route::get('/news/create', 'NewsController@create')->name('news.create');
+//    Route::post('/news', 'NewsController@store')->name('news.store');
+//    Route::get('/news/{news}/edit', 'NewsController@edit')->name('news.edit');
+//    Route::put('/news/{news}', 'NewsController@update')->name('news.update');
+//    Route::delete('/news/{news}', 'NewsController@destroy')->name('news.destroy');
+
+    Route::resource('/news', 'NewsController')->except(['show']);
 });
 
 Route::group([

@@ -24,8 +24,13 @@
                 </div>
 
             </div>
-            <a href="{{ route('admin.edit', $item) }}" class="btn btn-success">Edit</a>
-            <a href="{{ route('admin.destroy', $item) }}" class="btn btn-danger">Delete</a>
+            <form action="{{ route('admin.news.destroy', $item) }}" method="post">
+                <a href="{{ route('admin.news.edit', $item) }}" class="btn btn-success">Edit</a>
+                @csrf
+                @method('DELETE')
+                <input type="submit" class="btn btn-danger" value="Delete">
+            </form>
+
         </div>
     @empty
         Нет новостей
