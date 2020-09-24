@@ -23,16 +23,20 @@ class NewsController extends Controller
             ]);
     }
 
-    public function update(Request $request, News $news) {
+    protected function saveImage(Request $request) {
         $name = null;
         if ($request->file('image')) {
             $path = Storage::putFile('public/images', $request->file('image'));
             $name = Storage::url($path);
         }
+        return $name;
+    }
+
+    public function update(Request $request, News $news) {
 
         $this->validate($request, News::rules(), [], News::attrName());
         $news->fill($request->all());
-        $news->image = $name;
+        $news->image = $this->saveImage($request);
         $result = $news->save();
         if ($result) {
             return redirect()->route('news.oneNews', $news->id)->with('success', 'Новость изменена успешно');
@@ -55,14 +59,9 @@ class NewsController extends Controller
 
     public function store(Request $request) {
         $news = new News();
-        $name = null;
-        if ($request->file('image')) {
-            $path = Storage::putFile('public/images', $request->file('image'));
-            $name = Storage::url($path);
-        }
         $this->validate($request, News::rules(), [], News::attrName());
         $news->fill($request->all());
-        $news->image = $name;
+        $news->image = $this->saveImage($request);
         $result = $news->save();
         if ($result) {
             return redirect()->route('news.oneNews', $news->id)->with('success', 'Новость добавлена успешно');

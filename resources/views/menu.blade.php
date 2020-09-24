@@ -3,7 +3,12 @@
         <a class="navbar-brand" {{ request()->routeIs('Home') ? 'active' : '' }} href="{{ route('Home') }}">Главная</a>
         <a class="navbar-brand" href="{{ route('news.News') }}">Новости</a>
         <a class="navbar-brand" href="{{ route('category.index') }}">Категория новостей</a>
-        <a class="navbar-brand" href="{{ route('admin.news.index') }}">Админка</a>
+        @if(Auth::user())
+            @if(Auth::user()->is_admin)
+                <a class="navbar-brand" href="{{ route('admin.news.index') }}">Админка</a>
+            @endif
+        @endif
+
         <a class="navbar-brand" href="{{ route('vue') }}">VUE Demo</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -34,6 +39,9 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('updateProfile') }}">
+                                Profile
+                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

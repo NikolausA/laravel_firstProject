@@ -21,7 +21,8 @@ Route::get('/', 'HomeController@index')->name('Home');
 Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',
-    'as' => 'admin.'
+    'as' => 'admin.',
+    'middleware' => ['auth', 'is_admin']
 ], function () {
     Route::get('/page1', 'IndexController@page1')->name('page1');
     Route::get('/page2', 'IndexController@page2')->name('page2');
@@ -34,7 +35,18 @@ Route::group([
 //    Route::delete('/news/{news}', 'NewsController@destroy')->name('news.destroy');
 
     Route::resource('/news', 'NewsController')->except(['show']);
+
+    Route::get('/users', 'UserController@index')->name('user.index');
+//    Route::get('/users/create', 'UserController@create')->name('user.create');
+//    Route::post('/users', 'UserController@store')->name('user.store');
+//    Route::get('/users/edit/{user}', 'UserController@edit')->name('user.edit');
+//    Route::put('/users/{user}', 'UserController@update')->name('user.update');
+//    Route::get('/users', 'UserController@index')->name('user.index');
+    Route::delete('/users/{user}', 'UserController@destroy')->name('user.destroy');
+    Route::patch('/users/{user}', 'UserController@setAdmin')->name('user.setAdmin');
 });
+
+Route::match(['post', 'get'], '/profile', 'ProfileController@update')->name('updateProfile');
 
 Route::group([
     'prefix' => 'news',
@@ -56,7 +68,10 @@ Route::group([
 
 Route::view('/vue', 'vue')->name('vue');
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/enter', 'HomeController@entrance')->name('enter');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

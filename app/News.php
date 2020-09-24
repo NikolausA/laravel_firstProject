@@ -18,7 +18,7 @@ class News extends Model
         return [
             'title' => 'required|min:3|max:30',
             'text' => 'required|min:3',
-            'isPrivate' => 'sometimes|in:on',
+            'isPrivate' => 'sometimes|in:1',
             'image' => 'mimes:jpeg,bmp,png|max:1000',
             'category_id' => "exists:{$tableNameCategory},id"
         ];
