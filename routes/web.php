@@ -36,6 +36,8 @@ Route::group([
 
     Route::resource('/news', 'NewsController')->except(['show']);
 
+    Route::get('/parser', 'ParserController@index')->name('parser');
+
     Route::get('/users', 'UserController@index')->name('user.index');
 //    Route::get('/users/create', 'UserController@create')->name('user.create');
 //    Route::post('/users', 'UserController@store')->name('user.store');
@@ -45,6 +47,9 @@ Route::group([
     Route::delete('/users/{user}', 'UserController@destroy')->name('user.destroy');
     Route::patch('/users/{user}', 'UserController@setAdmin')->name('user.setAdmin');
 });
+
+Route::get('/auth/github', 'SocLoginController@loginGH')->name('loginGH');
+Route::get('/auth/github/response', 'SocLoginController@responseGH')->name('responseGH');
 
 Route::match(['post', 'get'], '/profile', 'ProfileController@update')->name('updateProfile');
 

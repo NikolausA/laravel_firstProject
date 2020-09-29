@@ -9,13 +9,13 @@
 @endsection
 
 @section('content')
-    @if (!$news->isPrivate)
-        <div class="col-md-6">
-            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+    @if (!$news->isPrivate || Auth::check())
+        <div class="col-md-10" style="margin: 15px; width: 100%; height: auto">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="display: flex; justify-content: space-between; width: 100%">
                 <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary">Категория новости</strong>
+{{--                    <strong class="d-inline-block mb-2 text-primary">Категория новости</strong>--}}
                     <h3 class="mb-0">{{ $news->title }}</h3>
-                    <div class="mb-1 text-muted">Nov 12</div>
+{{--                    <div class="mb-1 text-muted">Nov 12</div>--}}
                     <p class="card-text mb-auto">{{ $news->text }}</p>
                 </div>
                 <div class="col-auto d-none d-lg-block">

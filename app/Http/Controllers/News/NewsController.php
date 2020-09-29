@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\News;
 
+use App\Category;
 use App\News;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class NewsController extends Controller
 {
     public  function index() {
         $news = News::query()->paginate(4);
-        return view('news.index')->with('news', $news);
+        return view('news.index', ['news' => $news]);
     }
 
     public function oneNews(News $news) {
